@@ -23,4 +23,11 @@ class Point:
         """
         return math.sqrt((self.__x - a) ** 2 + (self.__y - b) ** 2)
 
-    
+
+    def distancePoint(self, camarade: "Point") -> float:
+        """:
+        param camarade: l'autre objet Point
+        :return: distance entre les 2 points
+        """
+        return self.distanceCoord(camarade.x, camarade.y)
+
