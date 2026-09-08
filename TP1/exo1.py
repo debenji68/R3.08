@@ -29,5 +29,5 @@ class Point:
         param camarade: l'autre objet Point
         :return: distance entre les 2 points
         """
-        return self.distanceCoord(camarade.x, camarade.y)
+        return self.distanceCoord(camarade.__x, camarade.__y)
 
