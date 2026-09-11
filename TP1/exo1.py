@@ -36,6 +36,14 @@ class Point:
         return f"Point : ({self.__x},{self.__y})"
 
 
+    def get_x(self) -> float:
+        return self.__x
+
+
+    def get_y(self) -> float:
+        return self.__y
+
+
 class Cercle:
     """Classe représentant un cercle."""
 
@@ -85,13 +93,6 @@ class Rectangle:
             self.__bas_gauche = bas_gauche
             self.__longeur =  - bas_gauche.__x
             self.__hauteur =
-
-
-    def get_bas_gauche(self) -> Point:
-        return self.bas_gauche
-
-    def get_haut_droit(self) -> Point:
-        return self.haut_droit
 
 
 
