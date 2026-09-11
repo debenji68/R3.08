@@ -60,23 +60,13 @@ class Cercle:
 
     def est_en_intersection(self, autre: "Cercle") -> bool:
         """Vérifie l'intersection avec un autre cercle."""
-
-
-
-
-
-
-
-
-
-
-
-
+        dist_centres = self.__centre.distancePoint(autre.__centre)
+        return dist_centres <= self.__rayon + autre.__rayon
 
 
     def contient_point(self, p: Point) -> bool:
-        """(5) Vérifie si un Point A fait partie du cercle (disque)[cite: 1]."""
-        return self.centre.distancePoint(p) <= self.rayon
+        """Vérifie si un Point A fait partie du cercle ."""
+        return self.__centre.distancePoint(p) <= self.__rayon
 
 
 
