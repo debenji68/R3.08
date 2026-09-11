@@ -39,34 +39,47 @@ class Point:
 class Cercle:
     """Classe représentant un cercle[cite: 1]."""
 
-    def __init__(self, rayon: float, centre: Point = None) -> None:
-        """Constructeur gérant l'origine par défaut ou un centre spécifié[cite: 1]."""
-        self.rayon = float(rayon)
-        self.centre = centre if centre is not None else Point(0.0, 0.0)
+    def __init__(self, rayon: float, centre: Point=Point(0,0)):
+        """Constructeur gérant l'origine par défaut ou un centre spécifié."""
+        self.__rayon = float(rayon)
+        self.__centre = centre
+
 
     def diametre(self) -> float:
-        """(1) Calcule le diamètre du cercle[cite: 1]."""
-        return 2 * self.rayon
+        """Calcule le diamètre du cercle."""
+        return 2 * self.__rayon
 
     def perimetre(self) -> float:
-        """(2) Calcule le périmètre du cercle[cite: 1]."""
-        return 2 * math.pi * self.rayon
+        """ Calcule le périmètre du cercle."""
+        return 2 * math.pi * self.__rayon
 
     def surface(self) -> float:
-        """(3) Calcule la surface du cercle[cite: 1]."""
-        return math.pi * (self.rayon**2)
+        """Calcule la surface du cercle."""
+        return math.pi * (self.__rayon**2)
+
 
     def est_en_intersection(self, autre: "Cercle") -> bool:
-        """(4) Vérifie l'intersection avec un autre cercle[cite: 1]."""
-        dist_centres = self.centre.distancePoint(autre.centre)
-        return dist_centres <= (self.rayon + autre.rayon)
+        """Vérifie l'intersection avec un autre cercle."""
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def contient_point(self, p: Point) -> bool:
         """(5) Vérifie si un Point A fait partie du cercle (disque)[cite: 1]."""
         return self.centre.distancePoint(p) <= self.rayon
 
 
-    
+
 if __name__ == "__main__":
    point1 = Point(2,3.4)
    print(point1)
