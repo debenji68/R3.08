@@ -91,8 +91,8 @@ class Rectangle:
             self.__hauteur = hauteur
         else:
             self.__bas_gauche = bas_gauche
-            self.__longeur =  - bas_gauche.__x
-            self.__hauteur =
+            self.__longeur = haut_droit.get_x() - bas_gauche.get_x()
+            self.__hauteur = haut_droit.get_y() - bas_gauche.get_y()
 
 
 
