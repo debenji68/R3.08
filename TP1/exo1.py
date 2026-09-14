@@ -95,6 +95,17 @@ class Rectangle:
             self.__hauteur = haut_droit.get_y() - bas_gauche.get_y()
 
 
+    def surface(self) -> float:
+        """Calcule la surface"""
+        return self.__longueur * self.__hauteur
+
+    def perimetre(self) -> float:
+        """Calcule le périmètre."""
+        return 2 * (self.__longueur + self.__hauteur)
+
+
+
+
 
 if __name__ == "__main__":
    point1 = Point(2,3.4)
