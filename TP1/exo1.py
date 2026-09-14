@@ -104,8 +104,24 @@ class Rectangle:
         return 2 * (self.__longueur + self.__hauteur)
 
 
+    @property
+    def bas_gauche(self) -> Point:
+        return self.__bas_gauche
 
 
+    @property
+    def bas_droit(self) -> Point:
+        return Point(self.__bas_gauche.get_x() + self.__longueur, self.__bas_gauche.get_y())
+
+
+    @property
+    def haut_gauche(self) -> Point:
+        return Point(self.__bas_gauche.get_x(), self.__bas_gauche.get_y() + self.__hauteur)
+
+
+    @property
+    def haut_droit(self) -> Point:
+        return Point(self.__bas_gauche.get_x() + self.__longueur, self.bas_gauche.get_y() + self.__hauteur)
 
 if __name__ == "__main__":
    point1 = Point(2,3.4)
