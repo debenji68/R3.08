@@ -68,6 +68,12 @@ class Cercle:
         :param rayon: l'abscisse du cercle
         :param centre: Point représentant le centre du cercle
         """
+        if not isinstance(rayon, int|float):
+            raise TypeError("Le rayon doit être un nombre réel.")
+        if centre is not None and not isinstance(centre, Point):
+            raise TypeError("Le centre doit être un objet Point.")
+        if rayon <= 0:
+            raise ValueError("Le rayon ne peut pas être négatif ou égal à 0")
         self.__rayon = float(rayon)
         self.__centre = centre
 
