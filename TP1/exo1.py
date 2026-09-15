@@ -11,6 +11,8 @@ class Point:
         :param x: abscisse du point (0.0 par défaut)
         :param y: ordonnée du point (0.0 par défaut)
         """
+        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            raise TypeError("Les coordonnées x et y doivent être des nombres réels.")
         self.__x = float(x)
         self.__y = float(y)
 
@@ -21,6 +23,8 @@ class Point:
         :param b: ordonnée de l'autre point
         :return: distance entre les 2 points
         """
+        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            raise TypeError(    "Les coordonnées a et b doivent être des nombres réels.")
         return math.sqrt((self.__x - a) ** 2 + (self.__y - b) ** 2)
 
 
@@ -29,6 +33,8 @@ class Point:
         :param camarade: l'autre objet Point
         :return: distance entre les 2 points
         """
+        if not isinstance(camarade, Point):
+            raise TypeError("L'argument 'camarade' doit être un Point.")
         return self.distanceCoord(camarade.__x, camarade.__y)
 
 
