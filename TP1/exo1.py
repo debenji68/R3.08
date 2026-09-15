@@ -122,7 +122,6 @@ class Rectangle:
     @property
     def haut_droit(self) -> Point:
         return Point(self.__bas_gauche.get_x() + self.__longueur, self.bas_gauche.get_y() + self.__hauteur)
-
 if __name__ == "__main__":
    point1 = Point(2,3.4)
    print(point1)
