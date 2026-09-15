@@ -96,6 +96,8 @@ class Cercle:
         Vérifie l'intersection avec un autre cercle.
         :param autre: Cercle
         """
+        if not isinstance(autre, Cercle):
+            raise TypeError("L'argument 'autre' doit être un Cercle.")
         dist_centres = self.__centre.distancePoint(autre.__centre)
         return dist_centres <= self.__rayon + autre.__rayon
 
@@ -105,6 +107,8 @@ class Cercle:
         Vérifie si un Point A fait partie du cercle .
         :param p: Point
         """
+        if not isinstance(p, Point):
+            raise TypeError("L'argument 'p' doit être un Point.")
         return self.__centre.distancePoint(p) <= self.__rayon
 
 
