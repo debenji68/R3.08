@@ -124,6 +124,12 @@ class Rectangle:
         :param hauteur: hauteur du rectangle
         :param haut_droit: Point du rectangle
         """
+        if not isinstance(self.__bas_gauche, Point):
+            raise TypeError("Le point bas_gauche doit être un Point.")
+        if not isinstance(longeur, (int, float)) or not isinstance(hauteur, (int, float)):
+            raise TypeError("La longueur et la hauteur doivent être des nombres réels.")
+        if not isinstance(haut_droit, Point):
+            raise TypeError("Le point haut_droit doit être un Point.")
         if haut_droit is None:
             self.__bas_gauche = bas_gauche
             self.__longeur = longeur
@@ -180,6 +186,8 @@ class Rectangle:
         Vérifie si un Point est situé dans le rectangle.
         :param p: Point
         """
+        if not isinstance(p, Point):
+            raise TypeError("L'argument 'p' doit être un Point.")
         if p.get_x() >= self.bas_gauche.get_x() and p.get_x() <= self.bas_droit.get_x():
             if p.get_y() >= self.bas_gauche.get_y() and p.get_y() <= self.haut_gauche.get_y():
                 return True
