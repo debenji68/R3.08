@@ -25,22 +25,31 @@ class Point:
 
 
     def distancePoint(self, camarade: "Point") -> float:
-        """:
-        param camarade: l'autre objet Point
+        """
+        :param camarade: l'autre objet Point
         :return: distance entre les 2 points
         """
         return self.distanceCoord(camarade.__x, camarade.__y)
 
 
     def __str__(self) -> str:
+        """
+        Returns: affichage sous forme de chaîne de carcatère
+        """
         return f"Point : ({self.__x},{self.__y})"
 
 
     def get_x(self) -> float:
+        """
+        Returns: récupère la valeur x
+        """
         return self.__x
 
 
     def get_y(self) -> float:
+        """
+        Returns: récupère la valeur y
+        """
         return self.__y
 
 
@@ -48,7 +57,11 @@ class Cercle:
     """Classe représentant un cercle."""
 
     def __init__(self, rayon: float, centre: Point=Point(0,0)):
-        """Constructeur gérant l'origine par défaut ou un centre spécifié."""
+        """
+        Constructeur gérant l'origine par défaut ou un centre spécifié.
+        :param rayon: l'abscisse du cercle
+        :param centre: Point représentant le centre du cercle
+        """
         self.__rayon = float(rayon)
         self.__centre = centre
 
@@ -67,13 +80,19 @@ class Cercle:
 
 
     def est_en_intersection(self, autre: "Cercle") -> bool:
-        """Vérifie l'intersection avec un autre cercle."""
+        """
+        Vérifie l'intersection avec un autre cercle.
+        :param autre: Cercle
+        """
         dist_centres = self.__centre.distancePoint(autre.__centre)
         return dist_centres <= self.__rayon + autre.__rayon
 
 
     def contient_point(self, p: Point) -> bool:
-        """Vérifie si un Point A fait partie du cercle ."""
+        """
+        Vérifie si un Point A fait partie du cercle .
+        :param p: Point
+        """
         return self.__centre.distancePoint(p) <= self.__rayon
 
 
@@ -84,6 +103,10 @@ class Rectangle:
         1. Par défaut : Point origine, longueur 1, hauteur 1.
         2. Spécification : bas-gauche (Point), longueur (float), hauteur (float).
         3. Deux points : bas-gauche (Point) et haut-droit (Point).
+        :param bas_gauche: Point du rectangle
+        :param longeur: longueur du rectangle
+        :param hauteur: hauteur du rectangle
+        :param haut_droit: Point du rectangle
         """
         if haut_droit is None:
             self.__bas_gauche = bas_gauche
@@ -106,26 +129,41 @@ class Rectangle:
 
     @property
     def bas_gauche(self) -> Point:
+        """
+        Returns: renvoie la valeur du point bas gauche
+        """
         return self.__bas_gauche
 
 
     @property
     def bas_droit(self) -> Point:
+        """
+        Returns: renvoie la valeur du point bas droit
+        """
         return Point(self.__bas_gauche.get_x() + self.__longeur, self.__bas_gauche.get_y())
 
 
     @property
     def haut_gauche(self) -> Point:
+        """
+        Returns: renvoie la valeur du point haut gauche
+        """
         return Point(self.__bas_gauche.get_x(), self.__bas_gauche.get_y() + self.__hauteur)
 
 
     @property
     def haut_droit(self) -> Point:
+        """
+        Returns: renvoie la valeur du point haut droit
+        """
         return Point(self.__bas_gauche.get_x() + self.__longeur, self.bas_gauche.get_y() + self.__hauteur)
 
 
     def contient_point(self, p: Point) -> bool:
-        """Vérifie si un Point est situé dans le rectangle."""
+        """
+        Vérifie si un Point est situé dans le rectangle.
+        :param p: Point
+        """
         if p.get_x() >= self.bas_gauche.get_x() and p.get_x() <= self.bas_droit.get_x():
             if p.get_y() >= self.bas_gauche.get_y() and p.get_y() <= self.haut_gauche.get_y():
                 return True
@@ -143,7 +181,7 @@ class Rectangle:
 
 
 def main() -> None:
-    """Méthode principale de test exécutée uniquement si le fichier est le script principal."""
+    """Méthode principale de test exécutée uniquement si le fichier est le script principal. Généré par IA"""
 
     print("=" * 40)
     print(" 1. TESTS DE LA CLASSE POINT ")
