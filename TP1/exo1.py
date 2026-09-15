@@ -97,11 +97,11 @@ class Rectangle:
 
     def surface(self) -> float:
         """Calcule la surface"""
-        return self.__longueur * self.__hauteur
+        return self.__longeur * self.__hauteur
 
     def perimetre(self) -> float:
         """Calcule le périmètre."""
-        return 2 * (self.__longueur + self.__hauteur)
+        return 2 * (self.__longeur + self.__hauteur)
 
 
     @property
@@ -111,7 +111,7 @@ class Rectangle:
 
     @property
     def bas_droit(self) -> Point:
-        return Point(self.__bas_gauche.get_x() + self.__longueur, self.__bas_gauche.get_y())
+        return Point(self.__bas_gauche.get_x() + self.__longeur, self.__bas_gauche.get_y())
 
 
     @property
@@ -121,10 +121,100 @@ class Rectangle:
 
     @property
     def haut_droit(self) -> Point:
-        return Point(self.__bas_gauche.get_x() + self.__longueur, self.bas_gauche.get_y() + self.__hauteur)
+        return Point(self.__bas_gauche.get_x() + self.__longeur, self.bas_gauche.get_y() + self.__hauteur)
+
+
+    def contient_point(self, p: Point) -> bool:
+        """Vérifie si un Point est situé dans le rectangle."""
+        if p.get_x() >= self.bas_gauche.get_x() and p.get_x() <= self.bas_droit.get_x():
+            if p.get_y() >= self.bas_gauche.get_y() and p.get_y() <= self.haut_gauche.get_y():
+                return True
+            else:
+                return False
+        else:
+            return False
+
+
+
+
+
+
+
+
+
+def main() -> None:
+    """Méthode principale de test exécutée uniquement si le fichier est le script principal."""
+
+    print("=" * 40)
+    print(" 1. TESTS DE LA CLASSE POINT ")
+    print("=" * 40)
+    p_orig = Point()
+    p1 = Point(3.0, 4.0)
+    print(f"Point origine par défaut : {p_orig}")
+    print(f"Point p1 créé : {p1}")
+    print(
+        f"Distance de p_orig aux coords (3.0, 4.0) : {p_orig.distanceCoord(3.0, 4.0)}"
+    )
+    print(f"Distance entre p_orig et p1 (objet) : {p_orig.distancePoint(p1)}")
+
+    print("\n" + "=" * 40)
+    print(" 2. TESTS DE LA CLASSE CERCLE ")
+    print("=" * 40)
+    c1 = Cercle(5.0)  # Origine par défaut, rayon 5
+    c2 = Cercle(3.0, Point(4.0, 0.0))  # Centre (4,0), rayon 3
+    print(f"Cercle c1 (rayon 5 à l'origine) :")
+    print(f"  - Diamètre : {c1.diametre()}")
+    print(f"  - Périmètre : {c1.perimetre():.2f}")
+    print(f"  - Surface : {c1.surface():.2f}")
+    print(f"c1 est-il en intersection avec c2 ? {c1.est_en_intersection(c2)}")
+    print(f"Le point p1(3,4) fait-il partie de c1 ? {c1.contient_point(p1)}")
+
+    print("\n" + "=" * 40)
+    print(" 3. TESTS DE LA CLASSE RECTANGLE ")
+    print("=" * 40)
+    # Mode 1 : par défaut
+    r_defaut = Rectangle()
+    # Mode 2 : bas-gauche, longueur, hauteur
+    r_custom = Rectangle(Point(1.0, 1.0), 4.0, 2.0)
+    # Mode 3 : bas-gauche et haut-droit
+    r_2pts = Rectangle(Point(0.0, 0.0), Point(5.0, 5.0))
+
+    print(f"Rectangle r_custom (Bas-Gauche: {r_custom.bas_gauche}, L=4, H=2) :")
+    print(f"  - Surface : {r_custom.surface()}")
+    print(f"  - Périmètre : {r_custom.perimetre()}")
+
+    # Accès direct aux objets Point du rectangle :
+    print("  - Positions des 4 coins (objets Point) :")
+    print(f"    * Bas-Gauche  : {r_custom.bas_gauche}")
+    print(f"    * Bas-Droit   : {r_custom.bas_droit}")
+    print(f"    * Haut-Gauche : {r_custom.haut_gauche}")
+    print(f"    * Haut-Droit  : {r_custom.haut_droit}")
+
+    # Tests de présence d'un point
+    pt_interieur = Point(2.0, 2.0)
+    pt_exterieur = Point(10.0, 10.0)
+    print(
+        f"  - Contient {pt_interieur} ? {r_custom.contient_point(pt_interieur)}"
+    )
+    print(
+        f"  - Contient {pt_exterieur} ? {r_custom.contient_point(pt_exterieur)}"
+    )
+
+    print("\n" + "=" * 40)
+    print(" 4. TESTS DE LA CLASSE TRIANGLE RECTANGLE ")
+    print("=" * 40)
+    tr1 = TriangleRectangle(3.0, 4.0)  # Angle droit à l'origine (0,0)
+    tr_iso = TriangleRectangle(5.0, 5.0, Point(2.0, 2.0))
+
+    print(f"Triangle TR1 (côtés 3 et 4 à l'origine) :")
+    print(f"  - Hypoténuse : {tr1.hypotenuse()}")
+    print(f"  - Périmètre  : {tr1.perimetre()}")
+    print(f"  - Surface    : {tr1.surface()}")
+    print(f"  - Est isocèle ? {tr1.est_isocele()}")
+
+    print(f"Triangle TR_ISO (côtés 5 et 5) :")
+    print(f"  - Est isocèle ? {tr_iso.est_isocele()}")
+
+
 if __name__ == "__main__":
-   point1 = Point(2,3.4)
-   print(point1)
-   point2 = Point(2,5)
-   print(point2)
-   print(point1.distancePoint(point2))
+    main()
