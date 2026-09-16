@@ -103,3 +103,15 @@ class Mage(Personnage):
             self.__mana -= 4
             return self.niveau * 3
         return self.niveau
+
+
+class Joueur:
+    def __init__(self, nom, max_personnages):
+        self.__nom = nom
+        self.__max_personnages = max_personnages
+        self.__personnages = []
+
+
+    def ajouter_personnage(self, personnage):
+        if len(self.__personnages) < self.__max_personnages:
+            self.__personnages.append(personnage)
