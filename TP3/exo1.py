@@ -25,6 +25,7 @@ class Personnage:
 
     def attaque(self,opposant:Personnage)->None:
         """
+        fonction permettant de lancer une attaque contre un adversaire
         Args:
             opposant: (Personnage) personnage qui va être l'opposant de l'attaque
 
@@ -44,10 +45,39 @@ class Personnage:
                 opposant.__pv -= self.__niveau
 
 
-    def combat(self,opposant:Personnage)->None:
+    def combat(self,opposant:Personnage)->str:
+        """
+        fonction permettant de faire un combat entre 2 personnages
+        Args:
+            opposant: (Personnage) Personnage qui va s'opposer a un autre personnage
+
+        Returns: (str) renvoie les 2 adversaire du combat
+
+        """
         while self.__pv > 0 and opposant.__pv > 0:
             self.attaque(opposant)
             print(f"{self.__pseudo} ({self.__pv} PV) vs {opposant.__pseudo} ({opposant.__pv} PV)")
 
-    def soigner(self):
+
+    def soigner(self)->None:
+        """
+        fonction permettant de soigner les personnages
+        Returns: None
+
+        """
         self.__pv = self.__niveau
+
+
+class Guerrier(Personnage):
+    def __init__(self, pseudo, niveau=1):
+        super().__init__(pseudo, niveau)
+        self.__pv = niveau * 8 + 4
+        self.__init = niveau * 4 + 6
+
+
+class Mage(Personnage):
+    def __init__(self, pseudo, niveau=1):
+        super().__init__(pseudo, niveau)
+        self.__pv = niveau * 5 + 10
+        self.__init = niveau * 6 + 4
+        self.__mana = niveau * 5
