@@ -38,17 +38,20 @@ class Personnage:
         Returns: None
 
         """
+        degats_de_self = self.degats()
+        degats_de_autre = autre.degats()
+
         if opposant.__init < self.__init:
-            opposant.__pv -= self.__niveau
+            opposant.__pv -= degats_de_self
             if opposant.__pv > 0:
-                self.__pv -= opposant.__niveau
+                self.__pv -= degats_de_autre
         elif opposant.__init == self.__init:
-            opposant.__pv -= self.__niveau
-            self.__pv -= opposant.__niveau
+            opposant.__pv -= degats_de_self
+            self.__pv -= degats_de_autre
         else:
-             self.__pv -= opposant.__niveau
+             self.__pv -= degats_de_autre
             if self.__pv > 0:
-                opposant.__pv -= self.__niveau
+                opposant.__pv -= degats_de_self
 
 
     def combat(self,opposant:Personnage)->str:
