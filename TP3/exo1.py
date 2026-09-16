@@ -46,5 +46,5 @@ class Personnage:
 
     def combat(self,opposant:Personnage)->None:
         while self.__pv > 0 and opposant.__pv > 0:
-            self.attaque(autre)
-            print(f"{self.__pseudo} ({self.__pv} PV) vs {autre.__pseudo} ({autre.__pv} PV)")
+            self.attaque(opposant)
+            print(f"{self.__pseudo} ({self.__pv} PV) vs {opposant.__pseudo} ({opposant.__pv} PV)")
