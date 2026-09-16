@@ -23,6 +23,12 @@ class Personnage:
     def pv(self):
         return self.__pv
 
+
+    @property
+    def niveau(self):
+        return self.__niveau
+
+
     def attaque(self,opposant:Personnage)->None:
         """
         fonction permettant de lancer une attaque contre un adversaire
@@ -67,17 +73,30 @@ class Personnage:
         """
         self.__pv = self.__niveau
 
+    def degats(self):
+        return self.__niveau
+
 
 class Guerrier(Personnage):
     def __init__(self, pseudo, niveau=1):
         super().__init__(pseudo, niveau)
-        self.__pv = niveau * 8 + 4
-        self.__init = niveau * 4 + 6
+        self.__pv = self.niveau * 8 + 4
+        self.__init = self.niveau * 4 + 6
+
+    def degats(self):
+        return self.niveau * 2
 
 
 class Mage(Personnage):
     def __init__(self, pseudo, niveau=1):
         super().__init__(pseudo, niveau)
-        self.__pv = niveau * 5 + 10
-        self.__init = niveau * 6 + 4
+        self.pv = niveau * 5 + 10
+        self.init = niveau * 6 + 4
         self.__mana = niveau * 5
+
+
+    def degats(self):
+        if self.__mana >= 4:
+            self.__mana -= 4
+            return self.niveau * 3
+        return self.niveau
