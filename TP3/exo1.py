@@ -48,3 +48,6 @@ class Personnage:
         while self.__pv > 0 and opposant.__pv > 0:
             self.attaque(opposant)
             print(f"{self.__pseudo} ({self.__pv} PV) vs {opposant.__pseudo} ({opposant.__pv} PV)")
+
+    def soigner(self):
+        self.__pv = self.__niveau
