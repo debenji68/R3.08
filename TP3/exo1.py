@@ -149,3 +149,9 @@ class Joueur:
             if p.pseudo == nom:
                 return self.__personnages.remove(p)
 
+
+    def del_perso_avec_personnage(self,personnage:Personnage)->Personnage:
+        for p in self.__personnages:
+            if p == personnage:
+                return self.__personnages.remove(p)
+
