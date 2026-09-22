@@ -28,6 +28,10 @@ class Personnage:
     def niveau(self):
         return self.__niveau
 
+    @property
+    def pseudo(self):
+        return self.__pseudo
+
 
     def attaque(self,opposant:Personnage)->None:
         """
@@ -39,7 +43,7 @@ class Personnage:
 
         """
         degats_de_self = self.degats()
-        degats_de_autre = autre.degats()
+        degats_de_autre = opposant.degats()
 
         if opposant.__init < self.__init:
             opposant.__pv -= degats_de_self
@@ -49,7 +53,7 @@ class Personnage:
             opposant.__pv -= degats_de_self
             self.__pv -= degats_de_autre
         else:
-             self.__pv -= degats_de_autre
+            self.__pv -= degats_de_autre
             if self.__pv > 0:
                 opposant.__pv -= degats_de_self
 
@@ -80,6 +84,10 @@ class Personnage:
         return self.__niveau
 
 
+    def __eq__(self,autre:Personnage)->bool:
+        return self.__niveau == autre.__niveau and self.__pseudo == autre.__pseudo
+
+
 class Guerrier(Personnage):
     def __init__(self, pseudo, niveau=1):
         super().__init__(pseudo, niveau)
@@ -106,12 +114,38 @@ class Mage(Personnage):
 
 
 class Joueur:
-    def __init__(self, nom, max_personnages):
+    def __init__(self, nom:str, max_personnages:int):
         self.__nom = nom
         self.__max_personnages = max_personnages
         self.__personnages = []
 
 
-    def ajouter_personnage(self, personnage):
+    def ajouter_personnage(self, personnage:Personnage)->None:
         if len(self.__personnages) < self.__max_personnages:
             self.__personnages.append(personnage)
+
+
+    def acces_perso_index(self,index:int)->Personnage:
+        return self.__personnages[index]
+
+
+    def acces_perso_nom(self,nom:str)->Personnage:
+        for personnage in self.__personnages:
+            if personnage.pseudo == nom:
+                return personnage
+
+
+    def acces_perso_avec_personnage(self,personnage:Personnage)->Personnage:
+        for p in self.__personnages:
+            if p == personnage:
+                return p
+
+    def del_perso_index(self,index:int)->Personnage:
+        return self.__personnages.pop(index)
+
+
+    def del_perso_nom(self,nom:str)->Personnage:
+        for p in self.__personnages:
+            if p.pseudo == nom:
+                return self.__personnages.remove(p)
+
