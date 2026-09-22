@@ -205,7 +205,7 @@ class Rectangle:
 
 
 def main() -> None:
-    """Méthode principale de test exécutée uniquement si le fichier est le script principal. Généré par IA"""
+    """Méthode principale de tests exécutée uniquement si le fichier est le script principal. Généré par IA"""
 
     print("=" * 40)
     print(" 1. TESTS DE LA CLASSE POINT ")

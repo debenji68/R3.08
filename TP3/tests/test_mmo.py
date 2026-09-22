@@ -1,6 +1,7 @@
-from exo1 import Personnage, Guerrier, Mage, Joueur
+import pytest
+from TP3.src.mmo import Personnage, Guerrier, Mage, Joueur
 
-def test_pero_defaut():
+def test_perso_defaut():
     p = Personnage("Hero")
     assert p.pseudo == "Hero"
     assert p.niveau == 1

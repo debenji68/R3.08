@@ -9,7 +9,7 @@ def plusgrand (a:int, b:int)->int:
     else:
         return b
 
-#test de la fonctionplus garnd
+#tests de la fonctionplus garnd
 print(plusgrand(3,4))
 print(plusgrand(5,4))
 
@@ -27,7 +27,7 @@ def superieur (a:int, b=10)->int:
     else:
         return (f"{a} est inférieur au seuil")
 
-#test de la fct superieur
+#tests de la fct superieur
 print(superieur(4))
 print(superieur(11))
 
@@ -44,7 +44,7 @@ def plusgrandliste (a:list)->int:
             sup = a[i]
     return sup
 
-#test de la fct plusgrandliste
+#tests de la fct plusgrandliste
 print(plusgrandliste([1,2,9,4,5]))
 print(plusgrandliste([1,2,3,4,5]))
 print(plusgrandliste([-6,-2,-3]))
